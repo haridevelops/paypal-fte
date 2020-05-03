@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-6">
+            <div class="form-group">
+                <label for="search-bar">Search Restaurants</label>
+                <input id="search-bar" type="text" class="form-control search" #search>
+                <!-- (keyup)="filterRestaurants(search.value)" -->
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-4">
+
+        </div>
+        <div class="col-md-3 col-sm-12 col-lg-2">
+            <div class="form-group">
+                <select class="custom-select" (change)="sortModified($event)">
+                    <option selected>Sort By</option>
+                    <option value="aggregateRating">Rating (Dsc)</option>
+                    <option value="votes">Votes (Dsc)</option>
+                    <option value="averageCostForTwo">Average Cost (Dsc)</option>
+                </select>
+                <!-- <input id="sort-bar" type="text" class="form-control search" #search>
+                (keyup)="filterRestaurants(search.value)" -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-8 col-lg-12">
+            <div class="custom-card-container">
+                <div class="card custom-card-child" style="width: 18rem;" *ngFor="let data of renderData" >
+                    <img src="assets/images/img-top.jpg" class="card-img-top" alt="Hotel Image">
+                    <div class="card-body">
+                      <h5 class="card-title">{{data.restaurantName}}</h5>
+                      <p class="card-text">Rating: {{data.aggregateRating}} <span [ngStyle]="{'background-color': data.ratingColor.split(' ').join('')}">{{data.ratingText}}</span></p>
+                      <p class="card-text">Cuisines: {{data.cuisines}}</p>
+                      <p class="card-text">Average Cost for Two: {{data.averageCostForTwo}}</p>
+                      <p class="card-text">Accepted Currency: {{data.currency}}</p>
+                      <p class="card-text">Table booking is <span *ngIf="data.hasTableBooking == 'Yes'"></span> Available</p>
+                      <p *ngIf="data.HasOnlineDelivery == 'No'" class="card-text">We are not delivering Home</p>
+                      <p *ngIf="data.HasOnlineDelivery == 'Yes'" class="card-text">We are delivering Home</p>
+
+                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

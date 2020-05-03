@@ -1,0 +1,10 @@
+.custom-card-container {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.custom-card-child {
+    margin-top: 10px;
+}
